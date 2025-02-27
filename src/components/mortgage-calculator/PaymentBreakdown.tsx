@@ -282,7 +282,7 @@ const PaymentBreakdown: React.FC<PaymentBreakdownProps> = ({
   return (
     <section className="bg-[#FFFDFA] pt-[80px]">
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-2 gap-16">
+        <div className="grid md:grid-cols-2 md:gap-16 gap-8">
           {/* Left Column - Chart and Total */}
           <div>
             <h4 className="font-semibold text-gray-900 text-base md:text-[18px]">
