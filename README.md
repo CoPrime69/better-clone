@@ -38,11 +38,20 @@ npm run dev
 yarn dev
 ```
 
-4. Open [http://localhost:3000](http://localhost:3000) with your browser to see the calculator
+4. Open http://localhost:3000 with your browser to see the calculator
 
 ## Project Structure
 
-- `
+- 📁 app : Contains the Next.js application pages
+- 📁 components : Reusable UI components
+- 📁 utils : Helper functions and utilities
+
+## Pages Structure
+
+- Home: `/` - Main landing page
+- About Us: `/about-us/` - Information about the company
+- Mortgage Calculator: `/mortgage-calculator` - Interactive mortgage calculator tool
+- Start Page: `/start` - Initial onboarding page for new users
 
 ## Learn More
 
