@@ -1,0 +1,83 @@
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+  ],
+  theme: {
+    extend: {
+      backgroundColor: {
+        'successBackground': '#f5f9f8',
+        'accentBorderInverseSecondary': '#f8f9fa',
+        'backgroundTertiary': '#ffffff',
+        'backgroundInverseSecondary': '#292b29',
+        'interactivePrimary': '#292b29',
+        'accentPrimary': '#4d4f4d',
+        'interactiveMuted': '#e0e2e0',
+        'interactiveSecondary': '#f8f9fa',
+        'accentSecondary': '#e9eaeb',
+      },
+      colors: {
+        'textPrimary': '#292b29',
+        'textSecondary': '#595959',
+        'textInversePrimary': '#ffffff',
+        'interactiveForegroundPrimary': '#ffffff',
+        'interactiveForegroundSecondary': '#292b29',
+        'interactiveForegroundTertiary': '#595959',
+        'interactiveForegroundMuted': '#a8aaa8',
+        'accentBorderPrimary': '#fcb41d',
+        'accentBorderSecondary': '#94c5d2',
+        'strokeBorder': '#c8c9c6',
+        'infoSecondary': '#94c5d2',
+        'graph2Tertiary': '#71a894',
+        'graph3Tertiary': '#ddd6b5',
+        'graph4Tertiary': '#c7a289',
+      },
+      borderColor: {
+        'accentBorderSecondary': '#94c5d2',
+      },
+      spacing: {
+        'xs': '4px',
+        'sm': '8px',
+        'base': '16px',
+        'lg': '24px',
+        'xl': '32px',
+        '2xl': '40px',
+        '3xl': '48px',
+        '4xl': '64px',
+        '5xl': '80px',
+      },
+      minWidth: {
+        '3xl': '72px',
+      },
+      width: {
+        'lg': '24px',
+      },
+      height: {
+        'lg': '24px',
+        'base': '16px',
+        '2xl': '40px',
+        '3xl': '48px',
+        '4xl': '64px',
+      },
+      padding: {
+        '2xs': '2px',
+        'xs': '4px',
+        'sm': '8px',
+        'base': '16px',
+        'lg': '24px',
+        'xl': '32px',
+      },
+      margin: {
+        'xs': '4px',
+        'sm': '8px',
+        'base': '16px',
+        'lg': '24px',
+        'xl': '32px',
+        '2xl': '40px',
+      },
+    },
+  },
+  plugins: [],
+}

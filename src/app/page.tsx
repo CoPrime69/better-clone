@@ -4,6 +4,7 @@ import HeroSection from "@/components/home/HeroSection";
 import TestimonialSection from "@/components/home/TestimonialSection";
 import ProductSection from "@/components/home/ProductSection";
 import Footer from "@/app/Footer";
+import MortgageCalculator from '@/components/mortgage-calculator/MortgageCalculator';
 
 export default function Home() {
   return (
@@ -14,14 +15,9 @@ export default function Home() {
       
       {/* Main content */}
       <main>
-        {/* Hero Section with Green Background and Phone Mockup */}
         <HeroSection />
-
-        {/* Testimonial Section with Arian's Story */}
-        <TestimonialSection />
-
-        {/* Products Section with Cards */}
         <ProductSection />
+        <TestimonialSection />
       </main>
       
       <Footer />
