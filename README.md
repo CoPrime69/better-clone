@@ -1,6 +1,6 @@
-# Better Mortgage Calculator
+# Better Clone
 
-A comprehensive mortgage calculator that includes key factors like homeowners association fees, property taxes, and private mortgage insurance (PMI).
+This is a Next.js project that replicates the core structure and functionality of [Better.com](https://better.com).  
 
 ## Features
 
@@ -49,7 +49,7 @@ yarn dev
 ## Pages Structure
 
 - Home: `/` - Main landing page
-- About Us: `/about-us/` - Information about the company
+- About Us: `/about-us` - Information about the company
 - Mortgage Calculator: `/mortgage-calculator` - Interactive mortgage calculator tool
 - Start Page: `/start` - Initial onboarding page for new users
 
