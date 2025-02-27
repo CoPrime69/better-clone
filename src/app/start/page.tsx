@@ -2,7 +2,7 @@
 
 import HeroSection from "@/components/start/HeroSection";
 import Header from "@/components/start/Header";
-import Footer from "@/layout/Footer";
+import Footer from "@/app/Footer";
 
 export default function StartPage() {
   return (
