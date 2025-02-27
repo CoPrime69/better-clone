@@ -1,90 +1,161 @@
-'use client'
+'use client';
 
-import Link from 'next/link'
-import { useState, useEffect } from 'react'
-import { usePathname } from 'next/navigation'
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function Header() {
-  const [isScrolled, setIsScrolled] = useState(false)
-  const [showGetStarted, setShowGetStarted] = useState(false)
-  const pathname = usePathname()
-  const isAboutPage = pathname === '/about-us'
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [showGetStarted, setShowGetStarted] = useState(false);
+  const pathname = usePathname();
+  const isAboutPage = pathname === "/about-us";
 
   useEffect(() => {
     const handleScroll = () => {
       // Only apply scroll effects on homepage
       if (!isAboutPage) {
-        setIsScrolled(window.scrollY > window.innerHeight * 0.8)
-        const testimonialStart = window.innerHeight
-        const halfwayPoint = testimonialStart + (window.innerHeight * 0.5)
-        setShowGetStarted(window.scrollY > halfwayPoint)
+        setIsScrolled(window.scrollY > window.innerHeight * 0.8);
+        const testimonialStart = window.innerHeight;
+        const halfwayPoint = testimonialStart + window.innerHeight * 0.5;
+        setShowGetStarted(window.scrollY > halfwayPoint);
       }
-    }
+    };
 
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [isAboutPage])
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [isAboutPage]);
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
 
   return (
-    <header className={`fixed top-0 left-0 right-0 w-full z-50 transition-all duration-300 ${
-      isAboutPage || isScrolled ? 'bg-white shadow-sm' : 'bg-[#004733]'
-    }`}>
-      <nav className="max-w-7xl mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
-          <div className="flex items-center space-x-8">
-            <Link 
-              href="/" 
-              className={`font-bold text-xl transition-colors duration-300 ${
-                isAboutPage || isScrolled ? 'text-[#004733]' : 'text-white'
-              }`}
-            >
-              Better
-            </Link>
-            <div className="hidden md:flex space-x-6">
-              {['Buy', 'Refinance', 'HELOC', 'Rates', 'Better+'].map((item) => (
-                <Link 
-                  key={item} 
+    <header
+      className={`sticky top-0 z-20 transition-all ease-in-out duration-300 ${
+        isAboutPage || isScrolled ? "bg-white shadow-sm" : "bg-[#004733]"
+      }`}
+    >
+      <nav className="m-auto flex max-w-screen-2xl justify-between p-5 md:py-5 md:px-10 xl:p-5">
+        {/* Left side - Logo and nav items */}
+        <div className="flex flex-row">
+          {/* Desktop Logo */}
+          <ul className="flex items-center">
+            <li className="mr-2">
+              <Link
+                className={`font-bold text-xl ${
+                  isAboutPage || isScrolled ? "text-[#292B29]" : "text-white"
+                }`}
+                href="/"
+              >
+                Better
+              </Link>
+            </li>
+
+            {/* Desktop Navigation Links */}
+            {['Buy', 'Refinance', 'HELOC', 'Rates', 'Better+'].map((item) => (
+              <li key={item} className="mx-5 hidden xl:block rounded-xl">
+                <Link
                   href={`/${item.toLowerCase().replace('+', '-plus')}`}
-                  className={`transition-colors duration-300 ${
-                    isAboutPage || isScrolled ? 'text-[#004733] hover:text-gray-700' : 'text-white hover:text-gray-300'
-                  }`}
+                  className={`rounded-full py-1 font-normal transition-all ease-in-out duration-300 h-12 px-4 ${
+                    isAboutPage || isScrolled ? "text-[#292B29]" : "text-white"
+                  } hover:bg-[#f5f5f5] hover:text-[#292B29]`}
                 >
                   {item}
                 </Link>
-              ))}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Right side - CTA buttons and mobile menu toggle */}
+        <ul className="flex items-center gap-3 lg:gap-6">
+          {/* Phone Icon */}
+          <li>
+            <div className="group min-[520px]:relative">
+              <div
+                className={`transition-all ease-in-out duration-300 border rounded-full p-2 md:p-3.5 ${
+                  isAboutPage || isScrolled
+                    ? "border-[#e1e3e1]"
+                    : "border-[#ffffff50]"
+                } group-hover:bg-[#f5f5f5] group-hover:border-[#f5f5f5]`}
+              >
+                <svg
+                  width="19"
+                  height="18"
+                  viewBox="0 0 19 18"
+                  className={`transition-all ease-in-out group-hover:[&_path]:fill-[#004733] ${
+                    isAboutPage || isScrolled
+                      ? "[&_path]:fill-[#292B29]"
+                      : "[&_path]:fill-white"
+                  } h-3 w-3 md:h-4 md:w-4`}
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M18.5 13.5L18.5 17C18.5 17.55 18.05 18 17.5 18C8.11 18 0.500002 10.39 0.500002 1C0.500002 0.450001 0.950003 0 1.5 0L4.99 0C5.54 0 5.99 0.450001 5.99 1C5.99 2.24 6.19 3.45 6.56 4.57C6.6 4.67 6.61 4.78 6.61 4.88C6.61 5.14 6.51 5.39 6.32 5.59L4.12 7.79C5.57 10.62 7.88 12.94 10.71 14.38L12.91 12.18C13.19 11.9 13.58 11.82 13.93 11.93C15.05 12.3 16.25 12.5 17.5 12.5C18.05 12.5 18.5 12.95 18.5 13.5Z"
+                    fill="#292B29"
+                  ></path>
+                </svg>
+              </div>
             </div>
-          </div>
-          <div className="flex items-center">
-            <button className={`transition-colors duration-300 mr-6 ${
-              isAboutPage || isScrolled ? 'text-[#004733]' : 'text-white'
-            }`}>
-              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+          </li>
+
+          {/* Sign In (Desktop) */}
+          <li className="hidden md:block">
+            <Link
+              className={`inline-flex items-center justify-center whitespace-nowrap rounded-full text-base leading-normal bg-transparent py-5 w-auto font-normal transition-all ease-in-out duration-300 h-12 px-4 ${
+                isAboutPage || isScrolled ? "text-[#292B29]" : "text-white"
+              } hover:bg-[#f5f5f5] hover:text-[#292B29] cursor-pointer`}
+              href="/sign-in"
+            >
+              Sign in
+            </Link>
+          </li>
+
+          {/* Get Started Button - Conditionally shown based on scroll position */}
+          <li
+            className={`transition-all duration-500 ease-in ${
+              !isAboutPage && showGetStarted ? "block" : "hidden"
+            }`}
+          >
+            <Link
+              className="inline-flex items-center justify-center whitespace-nowrap rounded-full text-base font-semibold leading-normal transition-all ease-in-out duration-200 bg-[#017848] text-white hover:bg-[#004733] hover:text-white py-3 w-auto h-8 px-4 md:px-6 md:h-12"
+              href="/get-started"
+            >
+              Get started
+            </Link>
+          </li>
+
+          {/* Mobile Menu Toggle Button */}
+          <li>
+            <button
+              className={`xl:hidden flex items-center font-normal transition-all ease-in-out duration-300 group-hover:bg-[#f5f5f5] group-hover:text-[#292B29] ${
+                isAboutPage || isScrolled ? "text-[#292B29]" : "text-white"
+              } hover:text-white hover:bg-inherit`}
+              aria-label="open mobile nav bar"
+              onClick={toggleMobileMenu}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="lucide lucide-menu"
+              >
+                <line x1="4" x2="20" y1="12" y2="12"></line>
+                <line x1="4" x2="20" y1="6" y2="6"></line>
+                <line x1="4" x2="20" y1="18" y2="18"></line>
               </svg>
             </button>
-            
-            <div className="flex items-center">
-              <Link 
-                href="/sign-in" 
-                className={`transition-all duration-300 ${
-                  isAboutPage || isScrolled ? 'text-[#004733]' : 'text-white'
-                }`}
-              >
-                Sign in
-              </Link>
-              
-              {!isAboutPage && showGetStarted && (
-                <Link
-                  href="/get-started"
-                  className="ml-6 transition-all duration-300 bg-[#004733] text-white px-4 py-2 rounded-lg hover:bg-[#096434]"
-                >
-                  Get started
-                </Link>
-              )}
-            </div>
-          </div>
-        </div>
+          </li>
+        </ul>
       </nav>
     </header>
-  )
+  );
 }
