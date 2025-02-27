@@ -72,8 +72,29 @@ const PaymentBreakdown: React.FC<PaymentBreakdownProps> = ({
   const hoaPercentage = calculatePercentage(localHoaFees);
   const utilitiesPercentage = calculatePercentage(localUtilities);
 
-  // Calculate widths for SVG visualization
-  const svgWidth = 528; // Base width of SVG
+  // Replace the fixed SVG width with a responsive approach
+  const svgContainerRef = useRef<HTMLDivElement>(null);
+  const [svgWidth, setSvgWidth] = useState(528); // Default width, will be updated
+
+  // Update SVG width on resize
+  useEffect(() => {
+    const updateWidth = () => {
+      if (svgContainerRef.current) {
+        setSvgWidth(svgContainerRef.current.clientWidth);
+      }
+    };
+
+    // Initial width calculation
+    updateWidth();
+
+    // Add resize event listener
+    window.addEventListener("resize", updateWidth);
+
+    // Cleanup
+    return () => window.removeEventListener("resize", updateWidth);
+  }, []);
+
+  // Calculate widths for SVG visualization (now using dynamic svgWidth)
   const piWidth = (piPercentage / 100) * svgWidth;
   const taxWidth = (taxPercentage / 100) * svgWidth;
   const insuranceWidth = (insurancePercentage / 100) * svgWidth;
@@ -260,8 +281,8 @@ const PaymentBreakdown: React.FC<PaymentBreakdownProps> = ({
 
   return (
     <section className="bg-[#FFFDFA] pt-[80px]">
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-2 gap-8">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid md:grid-cols-2 gap-16">
           {/* Left Column - Chart and Total */}
           <div>
             <h4 className="font-semibold text-gray-900 text-base md:text-[18px]">
@@ -275,9 +296,9 @@ const PaymentBreakdown: React.FC<PaymentBreakdownProps> = ({
               ${formatCurrency(totalMonthlyPayment)}/mo
             </p>
 
-            {/* SVG Chart Visualization */}
-            <div className="mt-8">
-              <svg height="80" width="100%" xmlns="http://www.w3.org/2000/svg">
+            {/* SVG Chart Visualization - Now with ref for dynamic sizing */}
+            <div className="mt-8" ref={svgContainerRef}>
+              <svg height="80" width="100%" viewBox={`0 0 ${svgWidth} 80`} preserveAspectRatio="xMinYMid meet" xmlns="http://www.w3.org/2000/svg">
                 <rect
                   data-testid="principalPill"
                   height="80"
