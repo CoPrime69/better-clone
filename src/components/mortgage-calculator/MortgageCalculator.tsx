@@ -21,13 +21,11 @@ export default function MortgageCalculator() {
   const [mobileDetailsOpen, setMobileDetailsOpen] = useState(false);
   const [mobileHeaderVisible, setMobileHeaderVisible] = useState(false);
   
-  // Add state variables for additional costs
   const [propertyTaxes, setPropertyTaxes] = useState(265);
   const [homeownersInsurance, setHomeownersInsurance] = useState(132);
   const [hoaFees, setHoaFees] = useState(132);
   const [utilities, setUtilities] = useState(100);
 
-  // Recalculate monthly payment whenever inputs change
   useEffect(() => {
     const price = parseCurrency(homePrice);
     const downPaymentAmount = parseCurrency(downPayment);
@@ -36,17 +34,14 @@ export default function MortgageCalculator() {
     const term = parseInt(loanTerm);
 
     if (price > 0 && interest >= 0 && term > 0) {
-      // Calculate base mortgage payment
       const basePayment = calculateMonthlyPayment(principal, interest, term);
       
-      // Add additional costs to get total monthly payment
       const totalPayment = basePayment + propertyTaxes + homeownersInsurance + hoaFees + utilities;
       
       setMonthlyPayment(formatCurrency(totalPayment));
     }
   }, [homePrice, downPayment, interestRate, loanTerm, propertyTaxes, homeownersInsurance, hoaFees, utilities]);
 
-  // Handle scroll for mobile sticky header
   useEffect(() => {
     const handleScroll = () => {
       if (window.innerWidth < 768) {
@@ -65,7 +60,6 @@ export default function MortgageCalculator() {
     setHomePrice(formatCurrency(numericValue));
     setSliderValue(numericValue);
 
-    // Update down payment to maintain percentage
     const percent = parseFloat(downPaymentPercent);
     const newDownPayment = calculateDownPayment(numericValue, percent);
     setDownPayment(formatCurrency(newDownPayment));
@@ -77,7 +71,6 @@ export default function MortgageCalculator() {
     const numericValue = parseCurrency(value);
     setDownPayment(formatCurrency(numericValue));
 
-    // Update percentage
     const price = parseCurrency(homePrice);
     if (price > 0) {
       const newPercent = calculateDownPaymentPercentage(price, numericValue);
@@ -91,7 +84,6 @@ export default function MortgageCalculator() {
     const percent = parseFloat(value) || 0;
     setDownPaymentPercent(percent.toString());
 
-    // Update down payment amount
     const price = parseCurrency(homePrice);
     const newDownPayment = calculateDownPayment(price, percent);
     setDownPayment(formatCurrency(newDownPayment));
@@ -123,16 +115,13 @@ export default function MortgageCalculator() {
     setUtilities(values.utilities);
   };
 
-  // Calculate the principal amount
   const principal = parseCurrency(homePrice) - parseCurrency(downPayment);
 
-  // Calculate slider percentage for styling
   const sliderPercentage = Math.min(
     Math.max(((sliderValue - 50000) / (3000000 - 50000)) * 100, 0),
     100
   );
 
-  // Calculate slider background style
   const sliderStyle = {
     backgroundImage: `linear-gradient(to right, rgb(41, 43, 41) ${sliderPercentage}%, rgb(200, 201, 198) ${sliderPercentage}%, rgb(200, 201, 198) 100%)`,
   };

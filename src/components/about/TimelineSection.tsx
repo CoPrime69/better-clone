@@ -118,7 +118,7 @@ const TimelineSection = () => {
                         <div className="w-full sm:max-w-[200px] md:max-w-[400px] bg-[#DFE0DC] p-3 sm:p-4 md:p-6 rounded-lg">
                           <p className="text-xs sm:text-sm md:text-base text-gray-700">{item.content}</p>
                           {item.hasButton && (
-                            <Link href="/get-started">
+                            <Link href="/start">
                               <button className="mt-2 sm:mt-4 bg-emerald-600 text-white px-3 py-1 sm:px-4 sm:py-2 md:px-6 md:py-2 text-xs sm:text-sm md:text-base rounded-lg hover:bg-emerald-700 transition-colors">
                                 Get started
                               </button>

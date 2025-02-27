@@ -18,7 +18,7 @@ export default function HeroSection() {
         {/* Selection buttons */}
         <div role="radiogroup" className="w-full flex flex-col gap-4 mb-16">
           <Link
-            href="/buy"
+            href="/"
             className="flex items-center gap-4 p-4 px-5 rounded-lg border-4 border-transparent
             outline outline-1 outline-gray-200
             transition-all duration-200 ease-in-out
@@ -52,7 +52,7 @@ export default function HeroSection() {
           </Link>
 
           <Link
-            href="/buy"
+            href="/"
             className="flex items-center gap-4 p-4 px-5 rounded-lg border-4 border-transparent
             outline outline-1 outline-gray-200
             transition-all duration-200 ease-in-out
@@ -91,7 +91,7 @@ export default function HeroSection() {
           </Link>
 
           <Link
-            href="/buy"
+            href="/"
             className="flex items-center gap-4 p-4 px-5 rounded-lg border-4 border-transparent
             outline outline-1 outline-gray-200
             transition-all duration-200 ease-in-out

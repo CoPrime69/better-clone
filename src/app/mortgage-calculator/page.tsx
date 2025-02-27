@@ -4,9 +4,9 @@ import MortgageCalculator from '@/components/mortgage-calculator/MortgageCalcula
 import Rest from '@/components/mortgage-calculator/Rest';
 export default function Page() {
   return (
-    <div className="bg-[#F7F8F9] min-h-screen">
+    <div className="bg-[#FFFDFA] min-h-screen">
       <Header />
-      <main>
+      <main className='bg-[#FFFDFA]'>
         <MortgageCalculator />
         <Rest/>
       </main>

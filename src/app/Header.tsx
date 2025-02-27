@@ -254,7 +254,7 @@ export default function Header() {
             </Link>
           </li>
 
-          {/* Get Started Button - Now updated to be conditionally shown based on scroll position */}
+          {/* Get Started Button*/}
           <li
             className={`transition-all duration-500 ease-in ${
               (!isAboutPage && !isCalculator) && showGetStarted ? "block" : "hidden"

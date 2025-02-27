@@ -89,19 +89,18 @@ const PaymentBreakdown: React.FC<PaymentBreakdownProps> = ({
   // Item descriptions
   const getItemDescription = (item: string): string => {
     if (item === "principal")
-      return "Principal & interest represents the basic loan payment without additional fees.";
+      return "Principal is the amount originally borrowed. Interest is the cost of borrowing that principal.";
     if (item === "taxes")
-      return "Property taxes are local government taxes collected on the value of the property.";
+      return "These are taxes paid to the local government, not your mortgage lender. This estimate uses the national average for property taxes.";
     if (item === "insurance")
-      return "Homeowners insurance covers damage to your home.";
+      return "This is an estimate of your monthly premium.";
     if (item === "hoa")
-      return "HOA fees are dues paid to your Homeowners Association.";
+      return "These are payments made to a homeowners association(HOA) that oversees day-to-day opration, rules and regulations..";
     if (item === "utilities")
       return "Utilities include water, electricity, and gas.";
     return "";
   };
 
-  // Get color for SVG segment based on hover state
   const getSegmentColor = (item: string) => {
     if (!hoveredItem) {
       // Original colors when nothing is hovered
@@ -201,7 +200,6 @@ const PaymentBreakdown: React.FC<PaymentBreakdownProps> = ({
   const [internetBill, setInternetBill] = useState(50);
   const [includeUtilities, setIncludeUtilities] = useState(true);
 
-  // Add these handlers
   const handleWaterBillChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = parseFloat(e.target.value) || 0;
     setWaterBill(value);

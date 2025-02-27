@@ -9,11 +9,7 @@ import MortgageCalculator from '@/components/mortgage-calculator/MortgageCalcula
 export default function Home() {
   return (
     <>
-      <Header />
-      {/* Add a spacer to account for the fixed header */}
-      {/* <div className="h-16"></div> */}
-      
-      {/* Main content */}
+      <Header />      
       <main>
         <HeroSection />
         <TestimonialSection/>

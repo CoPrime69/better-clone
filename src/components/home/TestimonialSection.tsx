@@ -142,10 +142,3 @@ export default function TestimonialSection() {
     </section>
   );
 }
-
-
-// <div className="flex gap-x-4 overflow-x-auto pb-2 scrollbar-hide">
-//               {Object.keys(testimonials).map((name) => (
-                
-//               ))}
-//             </div>
