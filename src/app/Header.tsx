@@ -37,7 +37,7 @@ export default function Header() {
         isAboutPage || isScrolled || isCalculator ? "bg-white shadow-sm" : "bg-[#004733]"
       }`}
     >
-      <nav className="m-auto flex max-w-screen-2xl justify-between p-5 md:py-5 md:px-10 xl:p-5">
+      <nav className="m-auto flex max-w-screen-2xl justify-between p-5 md:py-5 md:px-10">
         {/* Left side - Logo and nav items */}
         <div className="flex flex-row">
           {/* Mobile menu */}

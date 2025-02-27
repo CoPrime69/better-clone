@@ -16,10 +16,9 @@ export default function Home() {
       {/* Main content */}
       <main>
         <HeroSection />
+        <TestimonialSection/>
         <ProductSection />
-        <TestimonialSection />
       </main>
-      
       <Footer />
     </>
   );

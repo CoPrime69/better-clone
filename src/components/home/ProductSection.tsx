@@ -374,7 +374,7 @@ export default function ProductSection() {
       <div className="max-w-7xl mx-auto px-4">
         {/* Header */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 md:gap-8 mb-8 md:mb-12">
-          <h2 className="text-[48px] font-bold leading-tight">
+          <h2 className="text-[48px] font-semibold leading-tight">
             Got questions?
             <br />
             We&apos;ve got answers
@@ -383,10 +383,10 @@ export default function ProductSection() {
             {["Our products", "Calculators", "Guides & FAQs"].map((tab) => (
               <button
                 key={tab}
-                className={`inline-flex items-center justify-center whitespace-nowrap rounded-full text-base font-bold leading-normal disabled:pointer-events-none disabled:opacity-50 transition-all ease-in-out duration-200 ${
+                className={`inline-flex items-center justify-center whitespace-nowrap rounded-full text-base font-semibold leading-normal disabled:pointer-events-none disabled:opacity-50 transition-all ease-in-out duration-200 ${
                     activeTab === tab
                       ? "h-12 px-6 py-3 w-auto shadow-[0_0_0_4px_inset] border-[#017848] shadow-[#017848] text-[#004733] border"
-                      : "h-12 px-6 py-3 w-auto border border-[#e1e3e1] text-[#6B6D6B] hover:shadow-[0_0_0_4px_inset] hover:border-[#017848] hover:shadow-[#017848] hover:text-[#004733]"
+                      : "h-12 px-6 py-3 w-auto border border-[#e1e3e1] text-black hover:shadow-[0_0_0_4px_inset] hover:border-[#017848] hover:shadow-[#017848] hover:text-[#004733]"
                   }`}
                 onClick={() => setActiveTab(tab as ProductName)}
               >
